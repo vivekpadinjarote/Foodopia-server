@@ -9,6 +9,7 @@ import cartRouter from "./routes/cartRoute.js"
 import { initSocket } from "./utils/socket.js";
 import http from 'http'
 import { Server } from "socket.io";
+import orderRouter from "./routes/orderRoute.js";
 
 const app = express()
 dotenv.config()
@@ -41,6 +42,7 @@ initSocket(io)
  app.use("/api/food",foodRouter)
  app.use("/api/user",userRouter)
  app.use("/api/cart",cartRouter)
+ app.use("/api/order",orderRouter) // Serve static files from 'uploads' directory
 
 app.get("/",(req,res)=>{
     res.send("API Working ")

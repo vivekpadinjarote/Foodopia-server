@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const authMiddleware = async (req,res,next)=>{
+export const authMiddleware = async (req,res,next)=>{
     
     const token = req.headers.authorization.split(" ")[1];
     if (!token) {
@@ -43,7 +43,3 @@ export const adminAuthMiddleware =  async (req,res,next)=>{
         res.status(401).json({success:false,message:"Token Expired"})
     }
 } 
-
-
-
-export default authMiddleware;

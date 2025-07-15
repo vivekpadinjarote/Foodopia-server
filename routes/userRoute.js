@@ -4,11 +4,10 @@ import bcrypt from "bcrypt";
 import validator from "validator";
 import userModel from "../models/userModel.js";
 import dotenv from 'dotenv';
-import authMiddleware from "../middleware/auth.js";
+import { authMiddleware } from "../middleware/auth.js";
 import multer from "multer";
 import { cloudinary, storage } from "../utils/cloudinary.js";
 import { emitToUser } from "../utils/socket.js";
-import e from "express";
 
 dotenv.config()
 
@@ -22,6 +21,7 @@ const createToken = (id,role)=>{
 
     return {accessToken,refreshToken};
 };
+
 
 userRouter.post("/register",async (req,res)=>{
    const {userName,password,email}= req.body;
@@ -102,6 +102,7 @@ userRouter.post("/login", async (req,res)=>{
 
         const {refreshToken,accessToken} = createToken(user._id,user.role);
         const exisingToken = user.tokens.find(t=>t.userAgent === req.headers["user-agent"])
+        console.log(req.headers["user-agent"])
 
         if(exisingToken){
             exisingToken.refreshToken = refreshToken;
