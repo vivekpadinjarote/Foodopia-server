@@ -69,8 +69,8 @@ userRouter.post("/register",async (req,res)=>{
 
     res.cookie("refreshToken", refreshToken,{
     httpOnly:true,
-    sameSite:"Strict",
-    secure:false,
+    sameSite:"None",
+   secure: true,
     maxAge: 7 * 24 * 60 * 60 * 1000
    })
 
@@ -127,8 +127,8 @@ userRouter.post("/login", async (req,res)=>{
 
         res.cookie("refreshToken", refreshToken,{
         httpOnly:true,
-        sameSite:"Strict",
-        secure:false,
+        sameSite:"None",
+       secure: true,
         maxAge: 7 * 24 * 60 * 60 * 1000
         })
         
@@ -288,8 +288,8 @@ userRouter.post('/refresh',async(req,res)=>{
 
         res.cookie('refreshToken',refreshToken,{
             httpOnly: true,
-            sameSite:"Strict",
-            secure:false,
+            sameSite:"None",
+           secure: true,
             maxAge: 7 * 24 * 60 * 60 *1000
         })
 
