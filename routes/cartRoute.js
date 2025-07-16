@@ -6,7 +6,6 @@ import { emitToUser } from "../utils/socket.js";
 
 cartRouter.post("/",authMiddleware,async (req,res)=>{
     const {cartItem, quantity} = req.body;
-    //cartItem should be an object with _id,name,price,description,rating,category,image,veg_type
     if (!cartItem || typeof cartItem !== "object") {
         return res.status(400).json({ success: false, message: "Invalid item" });
     }

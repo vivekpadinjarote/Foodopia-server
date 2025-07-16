@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
+import dotenv from 'dotenv';
+
+dotenv.config()
 
 export const connectDB= async ()=>{
-    await mongoose.connect('mongodb://localhost:27017/Foodopia_DB').then(()=>console.log("DB Connected"))
+    await mongoose.connect(process.env.MONGO_URL).then(()=>console.log("DB Connected"))
 }
